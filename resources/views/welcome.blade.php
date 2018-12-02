@@ -1,98 +1,512 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
+@section('body')
+    <body class="vertical-layout vertical-overlay-menu 2-columns   menu-expanded fixed-navbar" 
+    data-open="click" data-menu="vertical-overlay-menu" data-col="2-columns">
+    
+    @include('layouts.header')
+    @include('layouts.sidebar')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+    <div class="app-content content">
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+            <!-- line chart section start -->
+            <section id="chartjs-line-charts">
+                <!-- Line Chart -->
+                <div class="row">
+                    <div class="col-xl-2 col-lg-12">
+                        <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Pencarian</h4>
+                        </div>
+                        <div class="card-content collapse show">
+                            <div class="card-body">
+                                <div class="form-group">
+                                <select class="select2-data-array form-control" id="cari-periode"></select>
+                                </div>
+                                <div class="form-group">
+                                <select class="select2-data-array form-control" id="cari-instansi"></select>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-10 col-lg-12">
+                        <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title" id="judul-grafik">Grafik Performance Absen Tahun</h4>
+                            <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                            <div class="heading-elements">
+                            <ul class="list-inline mb-0">
+                                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                <li><a data-action="close"><i class="ft-x"></i></a></li>
+                            </ul>
+                            </div>
+                        </div>
+                        <div class="card-content collapse show">
+                            <div class="card-body chartjs">
+                            <canvas id="absen-line-chart" height="500"></canvas>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+            </section>
+            <!-- // line chart section end -->
             </div>
         </div>
+    </div>
+
+    
+          @include('layouts.footer')
+    <!-- BEGIN VENDOR JS-->
+    <script src="{{asset('vendors/js/vendors.min.js')}}" type="text/javascript"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script src="{{asset('vendors/js/charts/chart.min.js')}}    " type="text/javascript"></script>
+    <script src="{{asset('vendors/js/forms/select/select2.full.min.js')}}" type="text/javascript"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN STACK JS-->
+    <script src="{{asset('js/core/app-menu.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/core/app.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/scripts/customizer.js')}}" type="text/javascript"></script>
+    <!-- END STACK JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    {{-- <script src="{{asset('js/scripts/forms/select/form-select2.js')}}" type="text/javascript"></script> --}}
+    <script type="text/javascript">
+
+        var monthText = ['Null', 'Januari', 'Februari', 'Maret',
+                            'April', 'Mei', 'Juni', 'Juli',
+                            'Agustus', 'September', 'Oktober',
+                            'November', 'Desember'];
+
+        var dataMonthChart = [];
+
+        var lineChartCanvas = document.getElementById('absen-line-chart').getContext('2d');
+        window.myBar = new Chart(lineChartCanvas);
+        
+        // function setchart(charttitle ,chartLabel, Pemasukan, Pengeluaran, Piutang, Hutang) {
+        //     window.myBar.destroy();
+        //     window.myBar = new Chart(areaChartCanvas, {
+        //         type : 'line',
+        //         data:{
+        //              labels: dataMonthChart,
+                        datasets: [{
+                            label: "Apel",
+                            data: response.apel,
+                            fill: false,
+                            borderColor: "#23992e",
+                            pointBorderColor: "#23992e",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        }, 
+                        {
+                            label: "Hadir",
+                            data: response.hadir,
+                            fill: false,
+                            borderColor: "#224899",
+                            pointBorderColor: "#224899",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        }, 
+                        {
+                            label: "Ijin",
+                            data: response.ijin,
+                            lineTension: 0,
+                            fill: false,
+                            borderColor: "#FF7D4D",
+                            pointBorderColor: "#FF7D4D",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        },
+                        {
+                            label: "Ijin Terlambat",
+                            data: response.ijinterlambat,
+                            fill: false,
+                            borderColor: "#843d07",
+                            pointBorderColor: "#843d07",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        },
+                        {
+                            label: "Keperluan Lain",
+                            data: response.keperluanlain,
+                            fill: false,
+                            borderColor: "#EFEF11",
+                            pointBorderColor: "#EFEF11",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        },
+                        {
+                            label: "Pulang Cepat",
+                            data: response.pulangcepat,
+                            fill: false,
+                            borderColor: "#B239B4",
+                            pointBorderColor: "#B239B4",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        },
+                        {
+                            label: "Sakit",
+                            data: response.sakit,
+                            fill: false,
+                            borderColor: "#00A5A8",
+                            pointBorderColor: "#00A5A8",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        },
+                        {
+                            label: "Tanpa Kabar",
+                            data: response.tanpakabar,
+                            fill: false,
+                            borderColor: "#e20f4f",
+                            pointBorderColor: "#e20f4f",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        },
+                        {
+                            label: "Tugas Belajar",
+                            data: response.tb,
+                            fill: false,
+                            borderColor: "#F85ABF",
+                            pointBorderColor: "#F85ABF",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        },
+                        {
+                            label: "Terlambat",
+                            data: response.terlambat,
+                            fill: false,
+                            borderColor: "#17F58C",
+                            pointBorderColor: "#17F58C",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        },
+                        {
+                            label: "Tugas Luar",
+                            data: response.tl,
+                            fill: false,
+                            borderColor: "#000000",
+                            pointBorderColor: "#000000",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        }]
+        //         },
+        //         options: {
+        //              responsive: true,
+                        maintainAspectRatio: false,
+                        legend: {
+                            position: 'bottom',
+                        },
+                        hover: {
+                            mode: 'label'
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                gridLines: {
+                                    color: "#f3f3f3",
+                                    drawTicks: false,
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Bulan'
+                                }
+                            }],
+                            yAxes: [{
+                                display: true,
+                                gridLines: {
+                                    color: "#f3f3f3",
+                                    drawTicks: false,
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Persentase'
+                                }
+                            }]
+                        },
+                        title: {
+                            display: true,
+                            text: instansi_text
+                        }
+        //         }
+        //     });
+        // };
+
+        var tahun_selected;
+        var instansi_selected;
+        var instansi_text;
+
+        $("#cari-periode").select2({
+            placeholder: "Periode",
+            allowClear: true
+        });
+        $("#cari-instansi").select2({
+            placeholder: "SKPD",
+            allowClear: true
+        });
+
+        $("#cari-periode").on('select2:select', function (e) {
+            var data = e.params.data;
+            tahun_selected = data.id;
+        });
+        
+        $("#cari-instansi").on('select2:select', function (e) {
+            var data = e.params.data;
+            instansi_selected = data.id;
+            instansi_text = data.text;
+        });
+
+        $.ajax({
+            async : true,
+            type : 'get',
+            url: 'http://eabsen.kalselprov.go.id/api/tahun/absensi',
+        }).done(function(response){
+            $.map(response, function(val){
+                $("#cari-periode").append($("<option />").val(val['periode']).text(val['periode']));
+            });
+            $('#cari-periode').val(null).trigger('change');
+        }).fail(function (error) {
+            console.log(error);
+        });
+
+        $.ajax({
+            async : true,
+            type : 'get',
+            url: 'http://eabsen.kalselprov.go.id/api/instansis',
+        }).done(function(response){
+            $.map(response, function(val){
+                $("#cari-instansi").append($("<option />").val(val['id']).text(val['namaInstansi']));
+            });
+            $('#cari-instansi').val(null).trigger('change');
+        }).fail(function (error) {
+            console.log(error);
+        });
+        
+        $(".select2-data-array").on('select2:select', function () {
+            if (( instansi_selected != null) && (tahun_selected != null)) {
+                $.ajax({
+                    async : true,
+                    type : 'POST',
+                    url: 'http://eabsen.kalselprov.go.id/api/absensi/bulan?tanggal='+tahun_selected+'&instansi_id='+instansi_selected,
+                }).done(function(response){
+                    $.each(response.datasets, function( index, value){
+                        dataMonthChart.push(monthText[parseInt(value.substring(5))]);
+                    });
+
+                    var ctx = $("#absen-line-chart");
+                    
+                    var chartOptions = {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        legend: {
+                            position: 'bottom',
+                        },
+                        hover: {
+                            mode: 'label'
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                gridLines: {
+                                    color: "#f3f3f3",
+                                    drawTicks: false,
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Bulan'
+                                }
+                            }],
+                            yAxes: [{
+                                display: true,
+                                gridLines: {
+                                    color: "#f3f3f3",
+                                    drawTicks: false,
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Persentase'
+                                }
+                            }]
+                        },
+                        title: {
+                            display: true,
+                            text: instansi_text
+                        }
+                    };
+                    
+                    var chartData = {
+                        labels: dataMonthChart,
+                        datasets: [{
+                            label: "Apel",
+                            data: response.apel,
+                            fill: false,
+                            borderColor: "#23992e",
+                            pointBorderColor: "#23992e",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        }, 
+                        {
+                            label: "Hadir",
+                            data: response.hadir,
+                            fill: false,
+                            borderColor: "#224899",
+                            pointBorderColor: "#224899",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        }, 
+                        {
+                            label: "Ijin",
+                            data: response.ijin,
+                            lineTension: 0,
+                            fill: false,
+                            borderColor: "#FF7D4D",
+                            pointBorderColor: "#FF7D4D",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        },
+                        {
+                            label: "Ijin Terlambat",
+                            data: response.ijinterlambat,
+                            fill: false,
+                            borderColor: "#843d07",
+                            pointBorderColor: "#843d07",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        },
+                        {
+                            label: "Keperluan Lain",
+                            data: response.keperluanlain,
+                            fill: false,
+                            borderColor: "#EFEF11",
+                            pointBorderColor: "#EFEF11",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        },
+                        {
+                            label: "Pulang Cepat",
+                            data: response.pulangcepat,
+                            fill: false,
+                            borderColor: "#B239B4",
+                            pointBorderColor: "#B239B4",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        },
+                        {
+                            label: "Sakit",
+                            data: response.sakit,
+                            fill: false,
+                            borderColor: "#00A5A8",
+                            pointBorderColor: "#00A5A8",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        },
+                        {
+                            label: "Tanpa Kabar",
+                            data: response.tanpakabar,
+                            fill: false,
+                            borderColor: "#e20f4f",
+                            pointBorderColor: "#e20f4f",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        },
+                        {
+                            label: "Tugas Belajar",
+                            data: response.tb,
+                            fill: false,
+                            borderColor: "#F85ABF",
+                            pointBorderColor: "#F85ABF",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        },
+                        {
+                            label: "Terlambat",
+                            data: response.terlambat,
+                            fill: false,
+                            borderColor: "#17F58C",
+                            pointBorderColor: "#17F58C",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        },
+                        {
+                            label: "Tugas Luar",
+                            data: response.tl,
+                            fill: false,
+                            borderColor: "#000000",
+                            pointBorderColor: "#000000",
+                            pointBackgroundColor: "#FFF",
+                            pointBorderWidth: 2,
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 4,
+                        }]
+                    };
+
+                    var config = {
+                        type: 'line',
+
+                        // Chart Options
+                        options : chartOptions,
+
+                        data : chartData
+                    };
+
+                    var lineChart = new Chart(ctx, config);
+
+                    document.getElementById("judul-grafik").innerHTML = "Grafik Performance Absen Tahun "+tahun_selected;
+                }).fail(function (error) {
+                    console.log(error);
+                });
+            };
+        });
+        
+        
+    </script>
+    <!-- END PAGE LEVEL JS-->
     </body>
-</html>
+@endsection
