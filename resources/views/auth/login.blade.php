@@ -64,24 +64,17 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                             <label for="remember-me"> Ingat Saya</label>
                           </fieldset>
                         </div>
-                        <div class="col-md-6 col-12 text-center text-md-right"><a href="recover-password.html" class="card-link">Lupa Password?</a></div>
                       </div>
 
                       <!-- Submit -->
-                      <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="ft-unlock"></i> Masuk</button>
-                      @if (Route::has('password.request'))
-                          <a class="btn btn-link" href="{{ route('password.request') }}">
-                              {{ __('Forgot Your Password?') }}
-                          </a>
-                      @endif
+                      <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="ft-unlock"></i> {{ __('Login') }}</button>
                       
                     </form>
                   </div>
                 </div>
                 <div class="card-footer">
                   <div class="">
-                    <p class="float-sm-left text-center m-0"><a href="recover-password.html" class="card-link">Recover password</a></p>
-                    <p class="float-sm-right text-center m-0">New to Stack? <a href="register-simple.html" class="card-link">Sign Up</a></p>
+                    <p class="float-sm-left text-center m-0 small">Diskominfo Prov. Kalsel TA 2018</p>
                   </div>
                 </div>
               </div>
@@ -106,7 +99,20 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
   <script src="{{asset('js/scripts/customizer.js')}}" type="text/javascript"></script>
   <!-- END STACK JS-->
   <!-- BEGIN PAGE LEVEL JS-->
-  <script src="{{asset('js/scripts/forms/form-login-register.js')}}" type="text/javascript"></script>
+  <!-- <script src="{{asset('js/scripts/forms/form-login-register.js')}}" type="text/javascript"></script> -->
   <!-- END PAGE LEVEL JS-->
+  <script>
+    $(document).ready(function(){
+      
+      // Remember checkbox
+      if($('.chk-remember').length){
+        $('.chk-remember').iCheck({
+          checkboxClass: 'icheckbox_square-blue',
+          radioClass: 'iradio_square-blue',
+        });
+      }
+    });
+  </script>
+  
 </body>
 @endsection
