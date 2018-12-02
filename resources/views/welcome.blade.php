@@ -58,6 +58,212 @@
                         </div>
                     </div>
                 </div>
+                    
+                <div class="row">
+                    <div class="col-xl-2 col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Pencarian</h4>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label>Kehadiran Bulanan</label>
+                                        <div class='input-group date' id='bulan-tahun'>
+                                            <input type='text' class="form-control" />
+                                            <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <span class="fa fa-calendar"></span>
+                                            </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label >Kehadiran Harian</label>
+                                        <div class='input-group date' id='hari-bulan-tahun'>
+                                            <input type='text' class="form-control" />
+                                            <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <span class="fa fa-calendar"></span>
+                                            </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-5 col-lg-12">
+                        <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title" id="label-bulanan">Tabel Performance Kehadiran Bulanan</h4>
+                            <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                            <div class="heading-elements">
+                            <ul class="list-inline mb-0">
+                                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                <li><a data-action="close"><i class="ft-x"></i></a></li>
+                            </ul>
+                            </div>
+                        </div>
+                        <div class="card-content collapse show">
+                            <div class="card-body">
+                                    <table class="table table-striped table-responsive">
+                                        <thead class="bg-blue-grey bg-lighten-4">
+                                            <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">SKPD</th>
+                                            <th scope="col">Persentase Kehadiran</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabel-kehadiran-bulan">
+                                            
+                                        </tbody>
+                                    </table>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-5 col-lg-12">
+                        <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title" id="label-harian">Tabel Performance Kehadiran Harian</h4>
+                            <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                            <div class="heading-elements">
+                            <ul class="list-inline mb-0">
+                                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                <li><a data-action="close"><i class="ft-x"></i></a></li>
+                            </ul>
+                            </div>
+                        </div>
+                        <div class="card-content collapse show">
+                            <div class="card-body">
+                                <table class="table table-striped table-responsive">
+                                    <thead class="bg-blue-grey bg-lighten-4">
+                                        <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">SKPD</th>
+                                        <th scope="col">Persentase Kehadiran</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tabel-kehadiran-harian">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-2 col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Pencarian</h4>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label>Apel Bulanan</label>
+                                        <div class='input-group date' id='apel-bulan-tahun'>
+                                            <input type='text' class="form-control" />
+                                            <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <span class="fa fa-calendar"></span>
+                                            </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label >Apel Harian</label>
+                                        <div class='input-group date' id='apel-hari-bulan-tahun'>
+                                            <input type='text' class="form-control" />
+                                            <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <span class="fa fa-calendar"></span>
+                                            </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-5 col-lg-12">
+                        <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title" id="label-apel-bulanan">Tabel Performance Apel Bulanan</h4>
+                            <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                            <div class="heading-elements">
+                            <ul class="list-inline mb-0">
+                                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                <li><a data-action="close"><i class="ft-x"></i></a></li>
+                            </ul>
+                            </div>
+                        </div>
+                        <div class="card-content collapse show">
+                            <div class="card-body">
+                                    <table class="table table-striped table-responsive">
+                                        <thead class="bg-blue-grey bg-lighten-4">
+                                            <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">SKPD</th>
+                                            <th scope="col">Persentase Apel</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabel-apel-bulan">
+                                            
+                                        </tbody>
+                                    </table>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-5 col-lg-12">
+                        <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title" id="label-apel-harian">Tabel Performance Apel Harian</h4>
+                            <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                            <div class="heading-elements">
+                            <ul class="list-inline mb-0">
+                                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                <li><a data-action="close"><i class="ft-x"></i></a></li>
+                            </ul>
+                            </div>
+                        </div>
+                        <div class="card-content collapse show">
+                            <div class="card-body">
+                                <table class="table table-striped table-responsive">
+                                    <thead class="bg-blue-grey bg-lighten-4">
+                                        <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">SKPD</th>
+                                        <th scope="col">Persentase Apel</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tabel-apel-harian">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
             </section>
             <!-- // line chart section end -->
             </div>
@@ -65,13 +271,20 @@
     </div>
 
     
-          @include('layouts.footer')
+    @include('layouts.footer')
     <!-- BEGIN VENDOR JS-->
     <script src="{{asset('vendors/js/vendors.min.js')}}" type="text/javascript"></script>
     <!-- BEGIN VENDOR JS-->
     <!-- BEGIN PAGE VENDOR JS-->
     <script src="{{asset('vendors/js/charts/chart.min.js')}}    " type="text/javascript"></script>
     <script src="{{asset('vendors/js/forms/select/select2.full.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('vendors/js/pickers/dateTime/moment-with-locales.min.js')}}"
+    type="text/javascript"></script>
+    <script src="{{asset('vendors/js/pickers/dateTime/bootstrap-datetimepicker.min.js')}}"
+    type="text/javascript"></script>
+    
+    <script src="{{asset('vendors/js/pickers/pickadate/legacy.js')}}" type="text/javascript"></script>
+    <script src="{{asset('vendors/js/pickers/daterange/daterangepicker.js')}}" type="text/javascript"></script>
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN STACK JS-->
     <script src="{{asset('js/core/app-menu.js')}}" type="text/javascript"></script>
@@ -79,9 +292,113 @@
     <script src="{{asset('js/scripts/customizer.js')}}" type="text/javascript"></script>
     <!-- END STACK JS-->
     <!-- BEGIN PAGE LEVEL JS-->
+    <script src="{{asset('js/scripts/pickers/dateTime/bootstrap-datetime.js')}}"
+    type="text/javascript"></script>
     {{-- <script src="{{asset('js/scripts/forms/select/form-select2.js')}}" type="text/javascript"></script> --}}
     <script type="text/javascript">
 
+        //KEHADIRAN BULANAN
+        $('#bulan-tahun').datetimepicker({
+            viewMode: 'years',
+            format: 'YYYY-MM'
+        });
+
+        $('#bulan-tahun').on('dp.change', function(e){
+            $('#tabel-kehadiran-bulan').html('');
+            $.ajax({
+                async : true,
+                type : 'POST',
+                url: 'http://eabsen.kalselprov.go.id/api/absensi/instansi/bulan/kehadiran?tanggal='+$('#bulan-tahun').find("input").val(),
+                beforeSend: function () {
+                    $('#tabel-kehadiran-bulan').append('<tr><td colspan="3"><center><i class="fa fa-circle-o-notch fa-spin fa-fw"></i>Loading...</center></td></tr>')
+                },
+            }).done(function(response){
+                $('#tabel-kehadiran-bulan').html('');
+                document.getElementById("label-bulanan").innerHTML = "Tabel Performance Absen Bulan "+($('#bulan-tahun').find("input").val()).substring(5)+'-'+($('#bulan-tahun').find("input").val()).substring(4,0);
+                $.each(response, function( index, value){
+                    $('#tabel-kehadiran-bulan').append('<tr><th class="text-center" scope="row">'+(index+1)+'</th><td>'+value.namaInstansi+'</td><td class="text-right">'+value.persentase_kehadiran+'%</td></tr>')
+                });
+            }).fail(function (error) {
+                console.log(error);
+            }); 
+        });
+
+        //KEHADIRAN HARIAN
+        $('#hari-bulan-tahun').datetimepicker({
+            format: 'D-M-Y',
+        });
+
+        $('#hari-bulan-tahun').on('dp.change', function(e){
+            $('#tabel-kehadiran-harian').html('');
+            $.ajax({
+                async : true,
+                type : 'POST',
+                url: 'http://eabsen.kalselprov.go.id/api/absensi/instansi/hari/kehadiran?tanggal='+$('#hari-bulan-tahun').find("input").val(),
+                beforeSend: function () {
+                    $('#tabel-kehadiran-harian').append('<tr><td colspan="3"><center><i class="fa fa-circle-o-notch fa-spin fa-fw"></i>Loading...</center></td></tr>')
+                },
+            }).done(function(response){
+                $('#tabel-kehadiran-harian').html('');
+                document.getElementById("label-harian").innerHTML = "Tabel Performance Absen Tanggal "+$('#hari-bulan-tahun').find("input").val();
+                $.each(response, function( index, value){
+                    $('#tabel-kehadiran-harian').append('<tr><th class="text-center" scope="row">'+(index+1)+'</th><td>'+value.namaInstansi+'</td><td class="text-right">'+value.persentase_kehadiran+'%</td></tr>')
+                });
+            }).fail(function (error) {
+                console.log(error);
+            }); 
+        });
+        
+        //APEL BULANAN
+        $('#apel-bulan-tahun').datetimepicker({
+            viewMode: 'years',
+            format: 'YYYY-MM'
+        });
+
+        $('#apel-bulan-tahun').on('dp.change', function(e){
+            $('#tabel-apel-bulan').html('');
+            $.ajax({
+                async : true,
+                type : 'POST',
+                url: 'http://eabsen.kalselprov.go.id/api/absensi/instansi/bulan/apel?tanggal='+$('#apel-bulan-tahun').find("input").val(),
+                beforeSend: function () {
+                    $('#tabel-apel-bulan').append('<tr><td colspan="3"><center><i class="fa fa-circle-o-notch fa-spin fa-fw"></i>Loading...</center></td></tr>')
+                },
+            }).done(function(response){
+                $('#tabel-apel-bulan').html('');
+                document.getElementById("label-apel-bulanan").innerHTML = "Tabel Performance Apel Bulan "+($('#apel-bulan-tahun').find("input").val()).substring(5)+'-'+($('#apel-bulan-tahun').find("input").val()).substring(4,0);
+                $.each(response, function( index, value){
+                    $('#tabel-apel-bulan').append('<tr><th class="text-center" scope="row">'+(index+1)+'</th><td>'+value.namaInstansi+'</td><td class="text-right">'+value.persentase_apel+'%</td></tr>')
+                });
+            }).fail(function (error) {
+                console.log(error);
+            }); 
+        });
+
+        //APEL HARIAN
+        $('#apel-hari-bulan-tahun').datetimepicker({
+            format: 'D-M-Y',
+        });
+
+        $('#apel-hari-bulan-tahun').on('dp.change', function(e){
+            $('#tabel-apel-harian').html('');
+            $.ajax({
+                async : true,
+                type : 'POST',
+                url: 'http://eabsen.kalselprov.go.id/api/absensi/instansi/hari/apel?tanggal='+$('#apel-hari-bulan-tahun').find("input").val(),
+                beforeSend: function () {
+                    $('#tabel-apel-harian').append('<tr><td colspan="3"><center><i class="fa fa-circle-o-notch fa-spin fa-fw"></i>Loading...</center></td></tr>')
+                },
+            }).done(function(response){
+                $('#tabel-apel-harian').html('');
+                document.getElementById("label-apel-harian").innerHTML = "Tabel Performance Apel Tanggal "+$('#apel-hari-bulan-tahun').find("input").val();
+                $.each(response, function( index, value){
+                    $('#tabel-apel-harian').append('<tr><th class="text-center" scope="row">'+(index+1)+'</th><td>'+value.namaInstansi+'</td><td class="text-right">'+value.persentase_apel+'%</td></tr>')
+                });
+            }).fail(function (error) {
+                console.log(error);
+            }); 
+        });
+    
         var monthText = ['Null', 'Januari', 'Februari', 'Maret',
                             'April', 'Mei', 'Juni', 'Juli',
                             'Agustus', 'September', 'Oktober',

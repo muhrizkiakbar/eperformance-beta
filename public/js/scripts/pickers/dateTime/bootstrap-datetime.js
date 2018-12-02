@@ -66,6 +66,11 @@
 	});
 
 	//Mininum View Mode
+	// $('#datetimepicker10').datetimepicker({
+	// 	viewMode: 'years',
+	// 	format: 'MM/YYYY'
+	// });
+
 	$('#datetimepicker10').datetimepicker({
 		viewMode: 'years',
 		format: 'MM/YYYY'
